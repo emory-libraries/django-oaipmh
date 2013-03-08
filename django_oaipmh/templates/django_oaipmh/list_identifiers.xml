@@ -1,0 +1,15 @@
+{% extends "django_oaipmh/base.xml" %}
+
+{% block content %}
+  <ListIdentifiers>
+    {% for i in items %}
+    <header>
+        <identifier>{{ i.identifier }}</identifier>
+        <datestamp>{{ i.last_modified|date:'c' }}</datestamp>
+        {% for set in i.sets %}
+        <setSpec>{{ set }}</setSpec>
+        {% endfor %}
+    </header>
+    {% endfor %}
+  </ListIdentifiers>
+{% endblock %}
