@@ -1,3 +1,6 @@
+{% load url from future %}
+{% load flatpages %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,5 +9,19 @@
   <body>
     <h1>{{ flatpage.title }}</h1>
     {{ flatpage.content|linebreaks|safe }}
+
+    <hr />
+
+    <a href="{% url 'admin:flatpages_flatpage_change' flatpage.pk %}"><button>Modify this page</button></a>
+    <h4>Other pages</h4>
+    {% get_flatpages as flatpages %}
+    <ul>
+      {% for page in flatpages %}
+        {% if page != flatpage %}
+          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
   </body>
 </html>
