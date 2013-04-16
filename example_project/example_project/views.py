@@ -14,7 +14,7 @@ class ExampleOAIProvider(OAIProvider):
         return datetime.now()
 
     def oai_identifier(self, obj):
-        return 'example_project'
+        return 'oai:example_project:' + obj.get_absolute_url()
 
     def sets(self, obj):
         return []
