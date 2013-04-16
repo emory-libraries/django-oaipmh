@@ -8,13 +8,10 @@ from django_oaipmh import OAIProvider
 
 class ExampleOAIProvider(OAIProvider):
     def items(self):
-        return FlatPage.objects.filter()
+        return FlatPage.objects.all()
 
     def last_modified(self, obj):
         return datetime.now()
-
-    def oai_identifier(self, obj):
-        return 'oai:example_project:' + obj.get_absolute_url()
 
     def sets(self, obj):
         return []

@@ -14,7 +14,7 @@ How to use
 
 * Extend OAIProvider and customize, similar to the way you would
   django.contrib.sitemaps.Sitemap  (should implement methods for
-  items, last_modified, oai_identifier, sets; probably will also
+  items, last_modified, sets and optionally oai_identifier; probably will also
   need to set values for oai identify)
 
 * Bind your customized OAI provider to your desired url, e.g.::

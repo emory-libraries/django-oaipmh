@@ -15,6 +15,7 @@
 #   limitations under the License.
 
 from django.conf import settings
+from django.contrib.sites.models import Site
 from django.views.generic import TemplateView
 
 
@@ -37,7 +38,8 @@ class OAIProvider(TemplateView):
 
     def oai_identifier(self, obj):
         # oai identifier for a given object
-        pass
+        return 'oai:%s:%s' % (Site.objects.get_current().domain,
+                              obj.get_absolute_url())
 
     def sets(self, obj):
         # list of set identifiers for a given object
